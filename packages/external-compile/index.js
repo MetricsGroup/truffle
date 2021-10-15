@@ -49,7 +49,7 @@ function* bufferLines() {
     const input = yield;
 
     // eof returns buffer
-    if (input == null) {
+    if (input === null) {
       const unterminated = buffer.join("");
 
       return unterminated ? [`${unterminated}%`] : [];
@@ -163,7 +163,7 @@ async function processTargets(targets, cwd, logger) {
 async function processTarget(target, cwd, logger) {
   const usesPath = target.path != undefined;
   const usesCommand = target.command != undefined;
-  const usesStdin = target.stdin || target.stdin == undefined; // default true
+  const usesStdin = target.stdin || target.stdin === undefined; // default true
   const usesProperties = target.properties || target.fileProperties;
 
   if (usesProperties && usesPath) {
@@ -264,7 +264,7 @@ const Compile = {
   // unused as the user is responsible for dealing with compiling their sources
   async sources({ options }) {
     options = Config.default().merge(options);
-    if (options.logger == null) {
+    if (options.logger === null) {
       options.logger = console;
     }
 
